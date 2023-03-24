@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width">
     <title>Mon Panier</title>
     <link rel="stylesheet" href="/static/styles/main.css">
+    <link rel="stylesheet" href="/static/styles/home.css">
 </head>
 <body>
     <?php View::show('standard/header'); ?>

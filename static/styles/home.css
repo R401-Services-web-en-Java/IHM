@@ -1,0 +1,22 @@
+#products{
+    background-color: wheat;
+    margin: 30px;
+    border-radius: 2em;
+    padding: 5em;
+}
+#productsList{
+    display: flex;
+    flex-wrap: wrap;
+}
+.product{
+    margin-top: 10em;
+    background-color: #D6C9C9;
+    padding: 0.5em;
+    border-radius: 2em;
+    width: 20%;
+    margin: 20px;
+}
+
+.product p{
+   font-size: 150%;
+}
