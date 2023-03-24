@@ -1,3 +1,47 @@
+
 body {
-    background-color:antiquewhite;
+    margin: 0;
+    background-color:#77B6EA;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #96E6B3;
+}
+
+form {
+    background-color: #CCFCCB;
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    padding: 2em;
+    border-radius: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5em;
+}
+form h2{
+    font-size: 180%;
+}
+
+label{
+    font-size: 120%;
+    margin-top: 5px;
+}
+
+form .submit{
+    width: 25%;
+}
+
+form .submit{
+    width: 25%;
+}
+
+footer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #96E6B3;
 }
