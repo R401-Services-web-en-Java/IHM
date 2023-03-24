@@ -2,14 +2,24 @@
 
 final class Users{
 
-    public static function isUser ($A_param){
+    public static function isUser($A_param):bool{
+        $A_param['password'] = hash('sha512', $A_param['password'].$A_param['id']);
         #Test si il est dans l'api Users
         return true;
     }
 
-    public static function getStatus ($A_param){
+    public static function getStatus($S_id):string{
         #Test si il est admin dans l'api Users
-        return true;
+        return "admin";
+    }
+
+    public static function create($A_param):bool{
+        if ($A_param['password'] == $A_param['passwordConfirm']){
+            $A_param['password'] = hash('sha512', $A_param['password'].$A_param['id']);
+            #ajouter dans l'api
+            return true;
+        }
+        return false;
     }
 
 }
