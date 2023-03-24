@@ -1,5 +1,5 @@
 <header>
-    <h1> <a href="/home">Mon Panier </a></h1> 
+     <a href="/home">Mon Panier </a>
 <?php if(Session::getSession()){
     echo '<a href ="myaccount"> Mon Compte </a>';
     if(Session::getSession()['status'] == "admin"){

@@ -9,6 +9,8 @@ header{
     flex-direction: row;
     justify-content: space-around;
     background-color: #96E6B3;
+    font-size: 250%;
+    padding: 0.5em;
 }
 
 form {
@@ -43,5 +45,7 @@ footer{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: #96E6B3;
+    background-color: #96e6b3;
+    font-size: 250%;
+    padding: 0.5em;
 }
