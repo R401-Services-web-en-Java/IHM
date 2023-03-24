@@ -7,5 +7,5 @@
     <label for="passwordConfirm">Confirmation de passe :</label>
     <input id="password_confirm" type="password" placeholder="Confirmation du mot de passe" title="Confirmation du mot de passe" required >
     <p>Déjà inscris ? <a href="/signin">Connectez vous !</a></p>
-    <input class="submit" type="submit" value="Valider">
+    <input class="submit" type="submit" value="S'inscrire">
 </form>
