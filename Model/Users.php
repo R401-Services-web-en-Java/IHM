@@ -19,7 +19,7 @@ final class Users{
         /*
         $A_user = Api::requete(self::URL."getOne", $A_param);
         */
-        $A_user = array("id" => "Nils", "password" => "qfqsdfqsdfqsdf", "status"=>"admin");
+        $A_user = array("username" => "Nils", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com");
         if($A_user){
 
             return true;
@@ -31,8 +31,8 @@ final class Users{
         /*
         $A_user = Api::requete(self::URL."getOne", array($S_id));
         */
-        $A_user = array("id" => "Nils", "password" => "qfqsdfqsdfqsdf", "status"=>"admin");
-        return $A_user['status'];
+        $A_user = array("username" => "Nils", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com");
+        return $A_user['role'];
     }
 
     public static function create($A_param):bool{
@@ -53,15 +53,14 @@ final class Users{
         retrun = $A_user = Api::requete(self::URL."getAll");
         */
         return array(
-            array("id" => "Nils", "password" => "qfqsdfqsdfqsdf", "status"=>"admin"),
-            array("id" => "Fred", "password" => "qfqsdqsdqsdqsf", "status"=>"user"),
-            array("id" => "Luca", "password" => "qfqsdfqsdfqsdf", "status"=>"admin"),
-            array("id" => "Lenny", "password" => "qfqsdfqsdfqsdf", "status"=>"user"),
-        );
+            array("username" => "Nils", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com"),
+            array("username" => "Nils2", "password" => "qfqsdfqsdfqsdf", "role"=>"user", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com"),
+            array("username" => "Nils3", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com"),
+            array("username" => "Nils4", "password" => "qfqsdfqsdfqsdf", "role"=>"user", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com"));
     }
 
     public static function getOne($S_id){
-        return array("id" => "Nils", "password" => "qfqsdfqsdfqsdf", "status"=>"admin");
+        return array("username" => "Nils", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com");
         /*
         return = Api::requete(self::URL."getOne", array($S_id));
         */
