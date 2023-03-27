@@ -22,4 +22,14 @@ final class Users{
         return false;
     }
 
+    public static function getAll():array{
+        #tout les user
+        return array(
+            array("id" => "Nils", "password" => "qfqsdfqsdfqsdf"),
+            array("id" => "Fred", "password" => "qfqsdqsdqsdqsf"),
+            array("id" => "Luca", "password" => "qfqsdfqsdfqsdf"),
+            array("id" => "Lenny", "password" => "qfqsdfqsdfqsdf"),
+        );
+    }
+
 }
