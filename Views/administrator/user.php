@@ -5,9 +5,9 @@
 <?php
 foreach($A_view as $A_product){
     echo '
-    <div class ="product">  <h2>'. $A_product["id"] .'</h2>
+    <div class ="product">  <h2>'. $A_product["username"] .'</h2>
     <form method="post" action="#">
-            <input type="hidden" name="id" value="'. $A_product["id"] .'">
+            <input type="hidden" name="id" value="'. $A_product["username"] .'">
             <input type="submit" value="Voir le compte">
             <input type="submit" value="Supprimmer">
         </form>
