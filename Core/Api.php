@@ -2,20 +2,19 @@
 
 class Api{
 
-    public static function requete($S_requete, $A_data = null){
+    public static function requete($url, $S_id = null, $S_action = null){
 
-        $url = 'https://example.com/api/$S_requete';
-
-        if (isset($A_data)){
-            foreach($A_data as $data){
-                $url .= "/".$data; 
-            }
+        if (isset($S_id)){
+            $url .= "/".$S_id;
         }
-
-        $token = 'votre_token_bearer';
+        
+        $token = 'token';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        if (isset($S_action)){
+            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $S_action);
+        }
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Authorization: Bearer ' . $token
         ));
@@ -26,4 +25,43 @@ class Api{
         curl_close($ch);
         return json_decode($response, true);
     }
+
+    public static function requetePost($url, $A_data, $S_id){
+        $url .= "/".$S_id;
+        $token = 'token';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization: Bearer ' . $token,
+            'Content-Type: application/json'
+        ));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($A_data));
+        $response = curl_exec($ch);
+        if(curl_errno($ch)){
+            throw new Exception('Erreur curl : ' . curl_error($ch));
+        }
+        curl_close($ch);
+        return json_decode($response, true);
+    }
+
+    public static function requeteAuthentification($url){
+        
+        $token = 'token';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization: Bearer ' . $token,
+            'Authorization: Basic ' . base64_encode('charlie_brown:passw0rd')
+        ));
+        $response = curl_exec($ch);
+        if(curl_errno($ch)){
+            throw new Exception('Erreur curl : ' . curl_error($ch));
+        }
+        curl_close($ch);
+        return json_decode($response, true);
+    }
+
 }
