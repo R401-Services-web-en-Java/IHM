@@ -3,11 +3,9 @@
 class Api{
 
     public static function requete($url, $S_id = null, $S_action = null){
-
         if (isset($S_id)){
             $url .= "/".$S_id;
         }
-        
         $token = 'token';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -46,7 +44,7 @@ class Api{
         return json_decode($response, true);
     }
 
-    public static function requeteAuthentification($url){
+    public static function requeteAuthentification($url, $S_name, $S_password){
         
         $token = 'token';
         $ch = curl_init();
@@ -54,7 +52,7 @@ class Api{
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
             'Authorization: Bearer ' . $token,
-            'Authorization: Basic ' . base64_encode('charlie_brown:passw0rd')
+            'Authorization: Basic ' . base64_encode($S_name.':'.$S_password)
         ));
         $response = curl_exec($ch);
         if(curl_errno($ch)){

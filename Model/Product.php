@@ -17,7 +17,7 @@ final class Product{
     }
 
     public static function getOne($S_id){
-        return Api::requete(self::URL, array($S_id));
+        return Api::requete(self::URL, $S_id);
     }
 
     public static function delete($S_id){
@@ -29,9 +29,7 @@ final class Product{
     }
 
     public static function add($A_data){
-        /*
-        return Api::requete(self::URL."add", $A_data);
-        */  
+        Api::requete(self::URL, $A_data, "POST"); 
     }
 
 }
