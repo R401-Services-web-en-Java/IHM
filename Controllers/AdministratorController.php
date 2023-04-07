@@ -16,7 +16,7 @@ final class AdministratorController{
             header("Location: /administrator");
             exit;
         }else{
-            View::show("administrator/formProducts", $A_postParams);
+            View::show("administrator/formProducts", Product::getOne($A_postParams['name']));
         }
     }
 
@@ -25,7 +25,6 @@ final class AdministratorController{
         header("Location: /administrator");
         exit;
     }
-
 
     public function modifyorDeleteUserAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if ($A_postParams['submit'] == "Supprimmer"){
@@ -36,4 +35,15 @@ final class AdministratorController{
             View::show("administrator/formUsers", Users::getOne($A_postParams['username']));
         }
     }
+
+    public function addProduct(Array $A_parametres = null, Array $A_postParams = null){
+        var_dump($A_postParams);
+        die;
+        if(Product::add($A_postParams)){
+            header("Location: /administrator");
+            exit;
+        }
+        
+    }
+       
 }

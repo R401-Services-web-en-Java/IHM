@@ -25,11 +25,15 @@ final class Product{
     }
 
     public static function update($A_data){
-        return Api::requetePost(self::URL, $A_data, $A_data["name"]);
+        $S_id = $A_data["name"];
+        unset($A_data["name"]);
+        return Api::requetePost(self::URL, $A_data, $S_id);
     }
 
     public static function add($A_data){
-        Api::requete(self::URL, $A_data, "POST"); 
+        var_dump($A_data);die;
+        Api::requetePostAdd(self::URL, $A_data); 
+        return true;
     }
 
 }

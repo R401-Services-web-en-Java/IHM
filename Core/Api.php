@@ -44,6 +44,25 @@ class Api{
         return json_decode($response, true);
     }
 
+    public static function requetePostAdd($url, $A_data){
+        $token = 'token';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Authorization: Bearer ' . $token,
+            'Content-Type: application/json'
+        ));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($A_data));
+        $response = curl_exec($ch);
+        if(curl_errno($ch)){
+            throw new Exception('Erreur curl : ' . curl_error($ch));
+        }
+        curl_close($ch);
+        return json_decode($response, true);
+    }
+
     public static function requeteAuthentification($S_name, $S_password){
         
         $token = 'token';
