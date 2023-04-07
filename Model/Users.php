@@ -14,7 +14,7 @@ final class Users{
     const URL           = 'http://localhost:8080/API-Produits-et-Utilisateurs-1.0-SNAPSHOT/api/users';
 
     public static function isUser($A_param):bool{
-        $A_user = Api::requeteAuthentification(self::URL, $A_param['name'], $A_param['password']);
+        $A_user = Api::requeteAuthentification($A_param['username'], $A_param['password']);
         if($A_user){
             return true;
         }
@@ -47,7 +47,7 @@ final class Users{
     }
 
     public static function update($A_data){
-        return Api::requetePost(self::URL, $A_data, $A_data["name"]);
+        return Api::requetePost(self::URL, $A_data, $A_data["username"]);
     }
 
     public static function add($A_data){

@@ -13,7 +13,7 @@ final class SigninController{
             exit;
         }
         else{
-            header("location: /signup");
+            header("location: /signip");
             exit;
         }
     }
