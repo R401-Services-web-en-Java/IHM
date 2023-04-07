@@ -31,7 +31,6 @@ final class Product{
     }
 
     public static function add($A_data){
-        var_dump($A_data);die;
         Api::requetePostAdd(self::URL, $A_data); 
         return true;
     }

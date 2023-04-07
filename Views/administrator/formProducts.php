@@ -50,7 +50,7 @@ echo'   <input type="radio" id="kg" name="unit" value="kg" >
     </div>
     </fieldset>
     <br>
-    <input type="submit" value="Ajouter">
+    <input type="submit" value="Modifier">
     </form>';
      
     

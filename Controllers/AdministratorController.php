@@ -36,14 +36,12 @@ final class AdministratorController{
         }
     }
 
-    public function addProduct(Array $A_parametres = null, Array $A_postParams = null){
-        var_dump($A_postParams);
-        die;
+    public function addProductAction(Array $A_parametres = null, Array $A_postParams = null): void{
+        
         if(Product::add($A_postParams)){
             header("Location: /administrator");
             exit;
         }
-        
     }
-       
+    
 }
