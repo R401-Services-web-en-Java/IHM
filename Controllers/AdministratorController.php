@@ -32,12 +32,11 @@ final class AdministratorController{
             header("Location: /administrator");
             exit;
         }else{
-            View::show("administrator/formUsers", Users::getOne($A_postParams['username']));
+            View::show("administrator/account", Users::getOne($A_postParams['username']));
         }
     }
 
-    public function addProductAction(Array $A_parametres = null, Array $A_postParams = null): void{
-        
+    public function addProductAction(Array $A_parametres = null, Array $A_postParams = null): void{ 
         if(Product::add($A_postParams)){
             header("Location: /administrator");
             exit;

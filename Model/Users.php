@@ -28,7 +28,8 @@ final class Users{
 
     public static function create($A_param):bool{
         if ($A_param['password'] == $A_param['passwordConfirm']){
-                Api::requete(self::URL, $A_param, "POST");
+            $A_param['role'] = "user";
+            Api::requetePostAdd(self::URL, $A_param);
             return true;
         }
         return false;

@@ -1,6 +1,6 @@
 <br>
-<h1>Ajouter un produits</h1>
-<form method="post" action="/administrator/addProduct">
+
+<form method="post" action="/administrator/addProduct"><h1>Ajouter un produit</h1>
     <label>Nom du produit : </label>
     <input type="text" required name="name" placeholder="Nom"><br>
     <label>Prix du produit : </label>
