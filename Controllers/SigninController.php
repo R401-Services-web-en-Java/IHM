@@ -17,4 +17,12 @@ final class SigninController{
             exit;
         }
     }
+
+    public function disconnectAction() : void{
+        Session::destroy();
+        header("location: /home");
+        exit;
+    }
+
+    
 }
