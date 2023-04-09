@@ -8,6 +8,7 @@ class Api{
     const TOKEN = "token";
 
     public static function requete($url, $S_id = null, $S_action = null){
+        
         if (isset($S_id)){
             $url .= '/'.$S_id;
         }
@@ -113,6 +114,7 @@ class Api{
     }
 
     public static function requetePostBasket($url, $A_data, $A_id){
+        
         if (isset($A_id)){
             foreach ($A_id as $SI_id) {
                 $url .= "/".$SI_id;
@@ -127,10 +129,13 @@ class Api{
             'Content-Type: application/json'
         ));
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($A_data));
+
         $response = curl_exec($ch);
+
         if(curl_errno($ch)){
             throw new Exception('Erreur curl : ' . curl_error($ch));
         }
+
         curl_close($ch);
         return json_decode($response, true);
     }

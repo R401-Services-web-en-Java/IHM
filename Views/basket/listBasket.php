@@ -1,6 +1,6 @@
 <?php
 echo'
-<a href="/basket/add">Cree un nouveaux panier</a>
+<a href="/basket/add"><h1>Cree un panier</h1></a>
 ';
 foreach($A_view as $A_basket){
     echo '

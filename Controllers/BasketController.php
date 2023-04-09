@@ -30,11 +30,12 @@ final class BasketController{
         }
         
         unset($A_postParams['submit']);
-        $A_postParams['username'] = $_SESSION['id'];
         Basket::addProductToBasket($A_postParams);
         header("Location: /basket");
         exit;
     }
+
+
 
     public function seeBasketAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if (!Session::check()){
@@ -42,19 +43,23 @@ final class BasketController{
             exit;
         }
 
-
-        if($A_postParams['submit'] == "Supprimer"){
+        if(isset ($A_postParams['submit'])  && $A_postParams['submit'] == "Supprimer"){
             Basket::delete($A_postParams['basket_id']);
             header("Location: /basket");
             exit;
-        }
+        }else{
+            if (isset($A_postParams['basket_id']) ){
+                $_SESSION['basket_id'] = $A_postParams['basket_id'];
+            }
 
-        
-        View::show("basket/seeBasket", Basket::getAllContentOne($A_postParams['basket_id']));
-        $A_data = Product::getAll();
-        $A_data['basket_id'] = $A_postParams['basket_id'];
-        View::show("basket/listProduct", $A_data);
+            View::show("basket/seeBasket", Basket::getAllContentOne($_SESSION['basket_id']));
+            $A_data = Product::getAll();
+            $A_data['basket_id'] = $_SESSION['basket_id'];
+            View::show("basket/listProduct", $A_data);
+        }
     }
+
+
 
     public function modifyordeleteproductAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if (!Session::check()){
@@ -65,9 +70,10 @@ final class BasketController{
             Basket::updateProductFromBasket($A_postParams);
         }
         else{
-            Basket::deleteProductFromBasket(array($A_postParams['basket_id'], 
-            $A_postParams['name']));
+            unset($A_postParams['submit']);
+            Basket::deleteProductFromBasket(array("basket_id" => $A_postParams['basket_id'],"product_name" => $A_postParams['product_name']));
         }
-        View::show("basket/seeBasket", Basket::getOne($A_postParams['basket_id']));
+        header("Location: /basket/seeBasket");
+        exit;
     }
 }
