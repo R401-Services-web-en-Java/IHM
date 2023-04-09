@@ -29,6 +29,12 @@ CREATE TABLE BASKET (
     }
 
     public static function delete($S_id){
+        /**
+         *  http://localhost:8080/API-Paniers-1.0-SNAPSHOT/api/baskets/$S_id 
+         * -X DELETE
+         * 
+         * Mais on ne peut pas supprimer un panier si il contient des produits
+        */
         return Api::requete(self::URL, $S_id, "DELETE");
     }
 

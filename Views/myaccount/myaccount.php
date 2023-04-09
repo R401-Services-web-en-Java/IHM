@@ -1,4 +1,4 @@
-<p>Bienvenus</p> 
+<p>Bienvenue</p> 
 <?php
     echo '
     <div class ="product">  
@@ -9,8 +9,3 @@
         <br> role : '. $A_view["role"].'
     </p></div>
     ';
-?>
-Afficher mes paniers:
-    * les voir
-    * les modifier
-    * les supprimer

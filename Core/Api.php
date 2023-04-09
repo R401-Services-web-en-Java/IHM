@@ -12,7 +12,6 @@ class Api{
         if (isset($S_id)){
             $url .= '/'.$S_id;
         }
-
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

@@ -47,15 +47,16 @@ final class BasketController{
             Basket::delete($A_postParams['basket_id']);
             header("Location: /basket");
             exit;
-        }
-        if (isset($A_postParams['basket_id']) ){
-            $_SESSION['basket_id'] = $A_postParams['basket_id'];
-        }
-        View::show("basket/seeBasket", Basket::getAllContentOne($_SESSION['basket_id']));
-        $A_data = Product::getAll();
-        $A_data['basket_id'] = $_SESSION['basket_id'];
-        View::show("basket/listProduct", $A_data);
+        }else{
+            if (isset($A_postParams['basket_id']) ){
+                $_SESSION['basket_id'] = $A_postParams['basket_id'];
+            }
 
+            View::show("basket/seeBasket", Basket::getAllContentOne($_SESSION['basket_id']));
+            $A_data = Product::getAll();
+            $A_data['basket_id'] = $_SESSION['basket_id'];
+            View::show("basket/listProduct", $A_data);
+        }
     }
 
 
