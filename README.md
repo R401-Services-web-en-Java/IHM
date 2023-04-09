@@ -12,7 +12,9 @@ Toutes les données sont stockées dans des APIs.
 Le site web permet de :
 
 - Visualiser les produits disponibles avec leur quantité et leur prix
+
 ![Liste Produits](images/listeProduits.png "Liste Produits")
+
 - Créer et supprimer un panier (sauf si le panier contient des produits)
 - Ajouter supprimer et modifier des produits dans le panier avec les quantités voulues
 - Prendre en compte les différentes unités possibles pour quantifier les produits (p.ex. au kilo, à l'unité, à la douzaine, etc.)
