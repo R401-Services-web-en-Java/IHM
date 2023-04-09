@@ -1,13 +1,29 @@
 <?php
 
+/**
+ *
+ */
 final class Controller
 {
+    /**
+     * @var
+     */
     private $_A_peeredUrl;
 
+    /**
+     * @var array|string[]
+     */
     private $_A_urlParameters;
 
+    /**
+     * @var
+     */
     private $_A_postParams;
 
+    /**
+     * @param $S_url
+     * @param $A_postParams
+     */
     public function __construct ($S_url, $A_postParams)
     {
         if(!empty($S_url)) {
@@ -52,6 +68,10 @@ final class Controller
 
     // On exécute notre triplet
 
+    /**
+     * @return void
+     * @throws ControllerException
+     */
     public function execute()
     {
         if (!class_exists($this->_A_peeredUrl['controller'])) {

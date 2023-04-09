@@ -1,5 +1,8 @@
 <?php
 
+/**
+ *
+ */
 final class LegalnoticeController
 {
     public function defaultAction(): void{

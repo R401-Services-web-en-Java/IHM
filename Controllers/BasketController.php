@@ -1,7 +1,13 @@
 <?php
 
+/**
+ *
+ */
 final class BasketController{
 
+    /**
+     * @return void
+     */
     public function defaultAction(): void{
         if (!Session::check()){
             header("Location: /home");
@@ -16,13 +22,20 @@ final class BasketController{
     }
 
 
-
+    /**
+     * @return void
+     */
     public function addAction(): void{
         Basket::createBasket();
         header("Location: /basket");
     }
 
 
+    /**
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function addProductAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if (!Session::check()){
             header("Location: /home");
@@ -36,7 +49,11 @@ final class BasketController{
     }
 
 
-
+    /**
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function seeBasketAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if (!Session::check()){
             header("Location: /home");
@@ -60,7 +77,11 @@ final class BasketController{
     }
 
 
-
+    /**
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function modifyordeleteproductAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if (!Session::check()){
             header("Location: /home");

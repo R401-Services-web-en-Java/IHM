@@ -1,5 +1,8 @@
 <?php
 
+/**
+ *
+ */
 final class Basket{
     /*
 
@@ -13,21 +16,46 @@ CREATE TABLE BASKET (
     */
 
 
+    /**
+     *
+     */
     const URL           = 'http://localhost:8080/API-Paniers-1.0-SNAPSHOT/api/baskets';
+    /**
+     *
+     */
     const URLCONTENT           = 'http://localhost:8080/API-Paniers-1.0-SNAPSHOT/api/contents';
 
+    /**
+     * @return mixed
+     * @throws Exception
+     */
     public static function getAll(){
       return Api::requete(self::URL);
     }
 
+    /**
+     * @param $S_id
+     * @return mixed
+     * @throws Exception
+     */
     public static function getForUser($S_id){
         return Api::requete(self::URL, $S_id, "GET");
       }
 
+    /**
+     * @param $S_id
+     * @return mixed
+     * @throws Exception
+     */
     public static function getOne($S_id){
         return Api::requete(self::URL, $S_id, "GET");
     }
 
+    /**
+     * @param $S_id
+     * @return mixed
+     * @throws Exception
+     */
     public static function delete($S_id){
         /**
          *  http://localhost:8080/API-Paniers-1.0-SNAPSHOT/api/baskets/$S_id 
@@ -38,10 +66,20 @@ CREATE TABLE BASKET (
         return Api::requete(self::URL, $S_id, "DELETE");
     }
 
+    /**
+     * @param $A_data
+     * @param $S_id
+     * @return mixed
+     * @throws Exception
+     */
     public static function update($A_data, $S_id){
         return Api::requetePost(self::URL, $A_data, $S_id);
     }
 
+    /**
+     * @return mixed
+     * @throws Exception
+     */
     public static function createBasket(){
         $A_data = array(
             "username" => $_SESSION['id'],
@@ -52,18 +90,30 @@ CREATE TABLE BASKET (
         return Api::requetePostAdd(self::URL, $A_data);
     }
 
+    /**
+     * @param $S_id
+     * @return mixed
+     * @throws Exception
+     */
     public static function getAllContentOne($S_id){
         return Api::requete(self::URLCONTENT, $S_id);
     }
 
 
-
-
-
+    /**
+     * @param $A_data
+     * @return mixed
+     * @throws Exception
+     */
     public static function getProductFromBasket($A_data){
         return Api::requeteGetBasket(self::URLCONTENT, array($A_data['basket_id'], $A_data['product_name']));
     }
 
+    /**
+     * @param $A_data
+     * @return mixed
+     * @throws Exception
+     */
     public static function addProductToBasket($A_data){
 /*
         $A_basket = self::getOne($A_data['basket_id']);
@@ -73,6 +123,11 @@ CREATE TABLE BASKET (
         return Api::requetePostAdd(self::URLCONTENT, $A_data);
     }
 
+    /**
+     * @param $A_data
+     * @return mixed
+     * @throws Exception
+     */
     public static function deleteProductFromBasket($A_data){/*
         $A_basket = self::getOne($A_data["basket_id"]);
         $A_basket['confirmation_date'] = date("Y-m-d", time());
@@ -80,6 +135,11 @@ CREATE TABLE BASKET (
         return Api::requeteGetBasket(self::URLCONTENT, array($A_data['basket_id'], $A_data['product_name']), "DELETE");
     }
 
+    /**
+     * @param $A_data
+     * @return mixed
+     * @throws Exception
+     */
     public static function updateProductFromBasket($A_data){
 
       /*  $A_basket = self::getOne($A_data['basket_id']);

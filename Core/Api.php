@@ -1,4 +1,8 @@
 <?php
+
+/**
+ *
+ */
 class Api{
     
     /**
@@ -7,6 +11,13 @@ class Api{
 
     const TOKEN = "token";
 
+    /**
+     * @param $url
+     * @param $S_id
+     * @param $S_action
+     * @return mixed
+     * @throws Exception
+     */
     public static function requete($url, $S_id = null, $S_action = null){
         
         if (isset($S_id)){
@@ -29,6 +40,13 @@ class Api{
         return json_decode($response, true);
     }
 
+    /**
+     * @param $url
+     * @param $A_data
+     * @param $S_id
+     * @return mixed
+     * @throws Exception
+     */
     public static function requetePost($url, $A_data, $S_id){
         $url .= '/'.$S_id;
         $ch = curl_init();
@@ -48,6 +66,12 @@ class Api{
         return json_decode($response, true);
     }
 
+    /**
+     * @param $url
+     * @param $A_data
+     * @return mixed
+     * @throws Exception
+     */
     public static function requetePostAdd($url, $A_data){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -66,6 +90,11 @@ class Api{
         return json_decode($response, true);
     }
 
+    /**
+     * @param $S_name
+     * @param $S_password
+     * @return mixed
+     */
     public static function requeteAuthentification($S_name, $S_password){
         
         $ch = curl_init();
@@ -113,6 +142,13 @@ class Api{
         return json_decode($response, true);
     }
 
+    /**
+     * @param $url
+     * @param $A_data
+     * @param $A_id
+     * @return mixed
+     * @throws Exception
+     */
     public static function requetePostBasket($url, $A_data, $A_id){
         
         if (isset($A_id)){

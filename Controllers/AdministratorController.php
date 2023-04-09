@@ -1,6 +1,12 @@
 <?php
 
+/**
+ *
+ */
 final class AdministratorController{
+    /**
+     * @return void
+     */
     public function defaultAction(): void{
         $A_products = Product::getAll();
         View::show("administrator/products", $A_products);
@@ -10,6 +16,11 @@ final class AdministratorController{
         
     }
 
+    /**
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function modifyorDeleteProductAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if ($A_postParams['submit'] == "Supprimmer"){
             Product::delete($A_postParams['name']);
@@ -20,12 +31,22 @@ final class AdministratorController{
         }
     }
 
+    /**
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function modifyProductAction(Array $A_parametres = null, Array $A_postParams = null): void{
         Product::update($A_postParams);
         header("Location: /administrator");
         exit;
     }
 
+    /**
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
     public function modifyorDeleteUserAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if ($A_postParams['submit'] == "Supprimmer"){
             Users::delete($A_postParams['username']);
@@ -36,7 +57,12 @@ final class AdministratorController{
         }
     }
 
-    public function addProductAction(Array $A_parametres = null, Array $A_postParams = null): void{ 
+    /**
+     * @param array|null $A_parametres
+     * @param array|null $A_postParams
+     * @return void
+     */
+    public function addProductAction(Array $A_parametres = null, Array $A_postParams = null): void{
         if(Product::add($A_postParams)){
             header("Location: /administrator");
             exit;
