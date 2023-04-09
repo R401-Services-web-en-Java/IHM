@@ -13,8 +13,16 @@ final class SigninController{
             exit;
         }
         else{
-            header("location: /signup");
+            header("location: /signip");
             exit;
         }
     }
+
+    public function disconnectAction() : void{
+        Session::destroy();
+        header("location: /home");
+        exit;
+    }
+
+    
 }

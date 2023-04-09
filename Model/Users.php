@@ -2,7 +2,7 @@
 /*
 CREATE TABLE USERS (
    mail VARCHAR(100),
-   username VARCHAR(100) NOT NULL PRIMARY KEY,
+   name VARCHAR(100) NOT NULL PRIMARY KEY,
    password VARCHAR(400) NOT NULL,
    firstname VARCHAR(100),
    lastname VARCHAR(100),
@@ -11,76 +11,47 @@ CREATE TABLE USERS (
 */
 final class Users{
 
-    const URL           = 'https://example.com/api/users/';
+    const URL           = 'http://localhost:8080/API-Produits-et-Utilisateurs-1.0-SNAPSHOT/api/users';
 
     public static function isUser($A_param):bool{
-        $A_param['password'] = hash('sha512', $A_param['password'].$A_param['id']);
-        #Test si il est dans l'api Users
-        /*
-        $A_user = Api::requete(self::URL."getOne", $A_param);
-        */
-        $A_user = array("username" => "Nils", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com");
+        $A_user = Api::requeteAuthentification($A_param['username'], $A_param['password']);
         if($A_user){
-
             return true;
         }
         return false;
     }
 
     public static function getStatus($S_id):string{
-        /*
-        $A_user = Api::requete(self::URL."getOne", array($S_id));
-        */
-        $A_user = array("username" => "Nils", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com");
+        $A_user = Api::requete(self::URL, $S_id);
         return $A_user['role'];
     }
 
     public static function create($A_param):bool{
         if ($A_param['password'] == $A_param['passwordConfirm']){
-            $A_param['password'] = hash('sha512', $A_param['password'].$A_param['id']);
-            #ajouter dans l'api
-            /*
-                $A_user = Api::requete(self::URL."add", $A_param);
-            */
+            $A_param['role'] = "user";
+            Api::requetePostAdd(self::URL, $A_param);
             return true;
         }
         return false;
     }
 
-    public static function getAll():array{
-        #tout les user
-        /*
-        retrun = $A_user = Api::requete(self::URL."getAll");
-        */
-        return array(
-            array("username" => "Nils", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com"),
-            array("username" => "Nils2", "password" => "qfqsdfqsdfqsdf", "role"=>"user", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com"),
-            array("username" => "Nils3", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com"),
-            array("username" => "Nils4", "password" => "qfqsdfqsdfqsdf", "role"=>"user", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com"));
+    public static function getAll(){
+        return Api::requete(self::URL);
     }
 
     public static function getOne($S_id){
-        return array("username" => "Nils", "password" => "qfqsdfqsdfqsdf", "role"=>"admin", "firstname"=>"nils", "lastname"=>"saadi", "mail"=>"nils.saadi@gmail.com");
-        /*
-        return = Api::requete(self::URL."getOne", array($S_id));
-        */
+        return Api::requete(self::URL, $S_id);
     }
 
     public static function delete($S_id){
-        /*
-        return Api::requete(self::URL."getOne/", array($S_id));
-        */  
-        }
+        return Api::requete(self::URL, $S_id, "DELETE");
+    }
 
     public static function update($A_data){
-        /*
-        return Api::requete(self::URL."getOne/", $A_data);
-        */  
+        return Api::requetePost(self::URL, $A_data, $A_data["username"]);
     }
 
     public static function add($A_data){
-        /*
-        return Api::requete(self::URL."getOne/", $A_data);
-        */  
+        Api::requete(self::URL, $A_data, "POST"); 
     }
 }
