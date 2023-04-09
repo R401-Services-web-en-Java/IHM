@@ -43,13 +43,15 @@ final class BasketController{
         }
 
 
-        if($A_postParams['submit'] == "Supprimer"){
+        if(isset($A_postParams['sumbit']) && $A_postParams['submit'] == "Supprimer"){
             Basket::delete($A_postParams['basket_id']);
             header("Location: /basket");
             exit;
         }
 
-        
+        if(isset($_SESSION['basket_id'])){
+            $A_postParams['basket_id'] = $_SESSION['basket_id'];
+        }
         View::show("basket/seeBasket", Basket::getAllContentOne($A_postParams['basket_id']));
         $A_data = Product::getAll();
         $A_data['basket_id'] = $A_postParams['basket_id'];
@@ -65,9 +67,11 @@ final class BasketController{
             Basket::updateProductFromBasket($A_postParams);
         }
         else{
-            Basket::deleteProductFromBasket(array($A_postParams['basket_id'], 
-            $A_postParams['name']));
+            unset($A_postParams['submit']);
+            Basket::deleteProductFromBasket(array("basket_id" => $A_postParams['basket_id'],"product_name" => $A_postParams['product_name']));
         }
-        View::show("basket/seeBasket", Basket::getOne($A_postParams['basket_id']));
+        $_SESSION['basket_id'] = $A_postParams['basket_id'];
+        header("Location: /basket/seeBasket");
+        exit;
     }
 }
