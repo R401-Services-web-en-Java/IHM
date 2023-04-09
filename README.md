@@ -1,3 +1,5 @@
+(le usecase est dans le dossier image)
+
 # Description
 Ce site web permet de visualiser les produits disponibles ainsi que leur quantité et leur prix. 
 Les utilisateurs enregistrés peuvent créer/supprimer un panier et y ajouter/supprimer des produits dans les quantités voulues.
