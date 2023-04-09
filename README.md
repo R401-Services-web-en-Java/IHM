@@ -12,10 +12,8 @@ Toutes les données sont stockées dans des APIs.
 Le site web permet de :
 
 - Visualiser les produits disponibles avec leur quantité et leur prix
-- Créer et supprimer un panier
-- Ajouter et supprimer des produits dans le panier avec les quantités voulues
-- Enregistrer la date de dernière mise à jour du panier
-- Valider ou annuler le panier, ce qui donne lieu à une commande ou non
+- Créer et supprimer un panier (sauf si le panier contient des produits)
+- Ajouter supprimer et modifier des produits dans le panier avec les quantités voulues
 - Prendre en compte les différentes unités possibles pour quantifier les produits (p.ex. au kilo, à l'unité, à la douzaine, etc.)
 - Seuls les utilisateurs enregistrés peuvent créer un panier et passer une commande
 - Les administrateurs peuvent ajouter et modifier les produits ainsi que voir les informations des utilisateurs
@@ -25,11 +23,8 @@ Le site web permet de :
 - Langages de programmation : HTML, CSS, PHP
 
 # Comment utiliser le site web
-Le site web sera déployé sur un serveur et peut être accédé via un navigateur web. 
-Les utilisateurs peuvent créer un compte et se connecter pour créer des paniers et passer des commandes.
+Les utilisateurs peuvent créer un compte et se connecter pour créer des paniers.
 Les administrateurs peuvent se connecter pour ajouter et modifier les produits ainsi que voir les informations des utilisateurs.
-
-
 
 Proposer de nouvelles fonctionnalités
 Améliorer l'interface utilisateur
