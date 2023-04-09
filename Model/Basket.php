@@ -41,7 +41,7 @@ CREATE TABLE BASKET (
             "username" => $_SESSION['id'],
             "confirmed" => false,
             "confirmation_date" => date("Y-m-d", time()),
-            "basket_id" => intval(uniqid())
+            "basket_id" => intval(uniqid()) + rand(0, 999999)
         );
         return Api::requetePostAdd(self::URL, $A_data);
     }
@@ -59,26 +59,26 @@ CREATE TABLE BASKET (
     }
 
     public static function addProductToBasket($A_data){
-
+/*
         $A_basket = self::getOne($A_data['basket_id']);
         $A_basket['confirmation_date'] = date("Y-m-d", time());
-        self::update($A_basket, $A_data['basket_id']);
-        unset($A_data['username']);
+        self::update($A_basket, $A_data['basket_id']);*/
+
         return Api::requetePostAdd(self::URLCONTENT, $A_data);
     }
 
-    public static function deleteProductFromBasket($A_data){
+    public static function deleteProductFromBasket($A_data){/*
         $A_basket = self::getOne($A_data["basket_id"]);
         $A_basket['confirmation_date'] = date("Y-m-d", time());
-        self::update($A_basket, $A_data["basket_id"]);
+        self::update($A_basket, $A_data["basket_id"]);*/
         return Api::requeteGetBasket(self::URLCONTENT, array($A_data['basket_id'], $A_data['product_name']), "DELETE");
     }
 
     public static function updateProductFromBasket($A_data){
 
-        $A_basket = self::getOne($A_data['basket_id']);
+      /*  $A_basket = self::getOne($A_data['basket_id']);
         $A_basket['confirmation_date'] = date("Y-m-d", time());
-        self::update($A_basket, $A_data['basket_id']);
+        self::update($A_basket, $A_data['basket_id']); */
         unset($A_data['submit']);
         return Api::requetePostBasket(self::URLCONTENT, $A_data, array($A_data['basket_id'], $A_data['product_name']));
     }

@@ -8,9 +8,11 @@ class Api{
     const TOKEN = "token";
 
     public static function requete($url, $S_id = null, $S_action = null){
+        
         if (isset($S_id)){
             $url .= '/'.$S_id;
         }
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
